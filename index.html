@@ -1,10 +1,558 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>TRKYS Consulting</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TRKYS Systems — Talent, matched with intention</title>
+<title>Vision : TRKYSSYSTEMS
+
+"Our vision is to become a trusted global technology partner, delivering innovative digital solutions that drive business transformation, operational excellence, and sustainable success."</title>
+<meta name="description" content="TRKYS Systems is a specialist talent consultancy connecting vetted candidates with growing teams.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12182B;
+    --ink-soft:#3A4257;
+    --paper:#EDEFF3;
+    --card:#FFFFFF;
+    --brass:#A9762C;
+    --brass-soft:#C79A4E;
+    --teal:#1F6F63;
+    --line:#D7DBE3;
+    --line-strong:#B7BECB;
+    --radius:2px;
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.55;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    margin:0;
+    color:var(--ink);
+  }
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+  .mono{font-family:'IBM Plex Mono', monospace; font-size:0.78rem; letter-spacing:0.06em; text-transform:uppercase;}
+  .accent{color:var(--brass);}
+
+  /* Skip link / focus */
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+    outline:2px solid var(--brass);
+    outline-offset:3px;
+  }
+  .skip-link{
+    position:absolute; left:-999px; top:0; background:var(--ink); color:#fff;
+    padding:10px 16px; z-index:200;
+  }
+  .skip-link:focus{left:16px; top:16px;}
+
+  /* NAV */
+  header.site{
+    position:sticky; top:0; z-index:100;
+    background:rgba(237,239,243,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:76px;
+  }
+  .logo{
+    display:flex; align-items:baseline; gap:8px;
+    font-family:'Fraunces', serif; font-weight:700; font-size:1.25rem;
+    text-decoration:none; color:var(--ink);
+  }
+  .logo .mark{
+    display:inline-block; width:9px; height:9px; background:var(--brass); border-radius:50%;
+    transform:translateY(-2px);
+  }
+  .navlinks{display:flex; gap:36px; align-items:center;}
+  .navlinks a{
+    text-decoration:none; font-size:0.92rem; color:var(--ink-soft);
+    padding:6px 0; border-bottom:1px solid transparent;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  .navlinks a:hover{color:var(--ink); border-color:var(--brass);}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:11px 22px; border-radius:var(--radius);
+    font-size:0.9rem; font-weight:500; text-decoration:none;
+    border:1px solid var(--ink); cursor:pointer;
+    transition:transform .15s ease, background .15s ease, color .15s ease;
+    font-family:'IBM Plex Sans', sans-serif;
+  }
+  .btn-primary{background:var(--ink); color:#fff;}
+  .btn-primary:hover{background:var(--brass); border-color:var(--brass); transform:translateY(-1px);}
+  .btn-ghost{background:transparent; color:var(--ink); border-color:var(--line-strong);}
+  .btn-ghost:hover{border-color:var(--ink); transform:translateY(-1px);}
+  .menu-toggle{display:none; background:none; border:none; cursor:pointer;}
+
+  /* HERO */
+  .hero{padding:88px 0 60px; position:relative;}
+  .hero-grid{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:64px; align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    color:var(--brass); margin-bottom:22px;
+  }
+  .eyebrow::before{content:""; width:22px; height:1px; background:var(--brass);}
+  .hero h1{
+    font-size:clamp(2.4rem, 4.2vw, 3.6rem);
+    line-height:1.06;
+    max-width:11.5ch;
+  }
+  .hero p.lede{
+    margin-top:22px; font-size:1.08rem; color:var(--ink-soft); max-width:46ch;
+  }
+  .hero-actions{display:flex; gap:16px; margin-top:34px; flex-wrap:wrap;}
+  .hero-note{
+    margin-top:26px; font-size:0.82rem; color:var(--ink-soft);
+    border-left:2px solid var(--line-strong); padding-left:12px; max-width:42ch;
+  }
+
+  /* PIPELINE — signature element */
+  .pipeline-card{
+    background:var(--card); border:1px solid var(--line);
+    padding:28px 24px 24px;
+  }
+  .pipeline-title{display:flex; justify-content:space-between; align-items:center; margin-bottom:22px;}
+  .pipeline-title .mono{color:var(--ink-soft);}
+  .pipeline-title .live{display:flex; align-items:center; gap:7px; color:var(--teal);}
+  .live-dot{width:7px; height:7px; border-radius:50%; background:var(--teal); animation:pulse 1.8s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
+
+  .pipeline-track{
+    position:relative; height:180px; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    overflow:hidden; margin-bottom:18px;
+  }
+  .pipeline-rail{
+    position:absolute; top:50%; left:0; right:0; height:1px; background:var(--line-strong);
+  }
+  .stage-label{
+    position:absolute; top:14px; font-size:0.68rem; font-family:'IBM Plex Mono', monospace;
+    text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft);
+  }
+  .stage-label span{color:var(--brass);}
+  .chip{
+    position:absolute; top:50%; transform:translate(-50%,-50%);
+    background:var(--ink); color:#fff; font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem; padding:7px 12px; border-radius:2px; white-space:nowrap;
+    animation:travel 9s linear infinite;
+    box-shadow:0 3px 10px rgba(18,24,43,0.18);
+  }
+  .chip.c2{animation-delay:-3s; background:var(--brass);}
+  .chip.c3{animation-delay:-6s; background:var(--teal);}
+  @keyframes travel{
+    0%{left:2%; opacity:0;}
+    6%{opacity:1;}
+    92%{opacity:1;}
+    100%{left:98%; opacity:0;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .chip{animation:none; left:50%; opacity:1;}
+    .live-dot{animation:none;}
+  }
+  .pipeline-foot{display:flex; justify-content:space-between; font-size:0.78rem; color:var(--ink-soft);}
+
+  /* SECTION SHARED */
+  section{padding:86px 0;}
+  .section-head{max-width:640px; margin-bottom:52px;}
+  .section-head .mono{color:var(--brass); display:block; margin-bottom:14px;}
+  .section-head h2{font-size:clamp(1.7rem, 3vw, 2.3rem);}
+  .section-head p{color:var(--ink-soft); margin-top:16px; font-size:1.02rem;}
+
+  /* SERVICES */
+  .services{background:var(--card); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .service-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-top:1px solid var(--line);}
+  .service{
+    padding:36px 30px; border-right:1px solid var(--line);
+    position:relative;
+  }
+  .service:last-child{border-right:none;}
+  .service .num{font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--brass); display:block; margin-bottom:18px;}
+  .service h3{font-size:1.22rem; margin-bottom:10px;}
+  .service p{color:var(--ink-soft); font-size:0.94rem; margin:0 0 16px;}
+  .service ul{margin:0; padding:0; list-style:none;}
+  .service li{
+    font-size:0.85rem; color:var(--ink-soft); padding:6px 0; border-top:1px solid var(--line);
+  }
+  .service li:first-child{border-top:none;}
+
+  /* HOW IT WORKS */
+  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
+  .step{border-top:2px solid var(--ink); padding-top:18px;}
+  .step .mono{color:var(--ink-soft); display:block; margin-bottom:10px;}
+  .step h3{font-size:1.05rem; margin-bottom:8px;}
+  .step p{font-size:0.9rem; color:var(--ink-soft); margin:0;}
+
+  /* WHY / POSITIONING (honest startup framing) */
+  .why{background:var(--ink); color:#EDEFF3;}
+  .why .section-head h2{color:#fff;}
+  .why .section-head p{color:#B7C0D6;}
+  .why .section-head .mono{color:var(--brass-soft);}
+  .why-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:40px;}
+  .why-item{border-left:2px solid rgba(255,255,255,0.16); padding-left:20px;}
+  .why-item h3{color:#fff; font-size:1.05rem; margin-bottom:8px;}
+  .why-item p{color:#B7C0D6; font-size:0.92rem; margin:0;}
+
+  /* ABOUT */
+  .about-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:64px; align-items:start;}
+  .about-card{
+    background:var(--card); border:1px solid var(--line); padding:26px;
+  }
+  .about-card .mono{color:var(--brass); display:block; margin-bottom:12px;}
+  .about-card p{font-size:0.9rem; color:var(--ink-soft); margin:0 0 14px;}
+  .about-card p:last-child{margin-bottom:0;}
+
+  /* CONTACT */
+  .contact{background:var(--card); border-top:1px solid var(--line);}
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;}
+  form{display:flex; flex-direction:column; gap:16px;}
+  .field label{
+    display:block; font-family:'IBM Plex Mono', monospace; font-size:0.72rem;
+    text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft); margin-bottom:8px;
+  }
+  .field input, .field textarea, .field select{
+    width:100%; border:1px solid var(--line-strong); background:var(--paper);
+    padding:12px 14px; font-family:'IBM Plex Sans', sans-serif; font-size:0.95rem; color:var(--ink);
+    border-radius:2px;
+  }
+  .field textarea{resize:vertical; min-height:110px;}
+  .form-status{font-size:0.85rem; color:var(--teal); min-height:20px;}
+  .contact-meta{font-size:0.9rem; color:var(--ink-soft);}
+  .contact-meta a{color:var(--ink); text-decoration:underline; text-underline-offset:3px;}
+  .contact-meta .row{padding:14px 0; border-top:1px solid var(--line);}
+  .contact-meta .row:first-child{border-top:none;}
+  .contact-meta .mono{color:var(--brass); display:block; margin-bottom:4px;}
+
+  footer{padding:36px 0; border-top:1px solid var(--line);}
+  .foot-grid{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
+  .foot-grid .mono{color:var(--ink-soft);}
+
+  @media (max-width: 880px){
+    .navlinks{
+      position:fixed; inset:76px 0 auto 0; background:var(--paper);
+      flex-direction:column; align-items:flex-start; gap:0;
+      border-bottom:1px solid var(--line);
+      transform:translateY(-8px); opacity:0; pointer-events:none;
+      transition:opacity .18s ease, transform .18s ease;
+    }
+    .navlinks.open{opacity:1; transform:translateY(0); pointer-events:auto;}
+    .navlinks a{width:100%; padding:16px 32px; border-bottom:1px solid var(--line);}
+    .navlinks .btn{margin:16px 32px;}
+    .menu-toggle{display:block;}
+    .hero-grid, .about-grid, .contact-grid{grid-template-columns:1fr;}
+    .service-grid{grid-template-columns:1fr;}
+    .service{border-right:none; border-top:1px solid var(--line);}
+    .service:first-child{border-top:none;}
+    .steps{grid-template-columns:1fr 1fr;}
+    .why-grid{grid-template-columns:1fr;}
+    .why-item{border-left:none; border-top:2px solid rgba(255,255,255,0.16); padding-left:0; padding-top:16px;}
+  }
+</style>
 </head>
 <body>
-    <h1>Welcome to TRKYS Consulting</h1>
-    <p>Business Consulting Services</p>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site">
+  <nav class="wrap">
+    <a href="#" class="logo"><span class="mark"></span>TRKYS<span style="color:var(--brass)">.</span>Systems</a>
+    <div class="navlinks" id="navlinks">
+      <a href="#services">Services</a>
+      <a href="#how">How it works</a>
+      <a href="#why">Why us</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="btn btn-primary">Start a search</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 6h16M3 11h16M3 16h16" stroke="#12182B" stroke-width="1.5"/></svg>
+    </button>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow mono">Talent consultancy · Founded 2026</span>
+        <h1>Vetted candidates, delivered to the roles that actually need them.</h1>
+        <p class="lede">TRKYS Systems sources, screens, and places specialist talent for teams that don't have time to sift through a hundred resumes to find three good ones.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Request candidates</a>
+          <a href="#how" class="btn btn-ghost">See how sourcing works</a>
+        </div>
+        <p class="hero-note">We're a young firm building our name one placement at a time — which means founder-level attention on every search we take on, not a junior account team.</p>
+      </div>
+
+      <div class="pipeline-card" aria-hidden="false">
+        <div class="pipeline-title">
+          <span class="mono">Active pipeline / Ref. 0142</span>
+          <span class="live mono"><span class="live-dot"></span>Sourcing live</span>
+        </div>
+        <div class="pipeline-track" role="img" aria-label="Diagram showing candidates moving through sourcing, screening, client review, and offer stages">
+          <div class="pipeline-rail"></div>
+          <span class="stage-label" style="left:2%">Source</span>
+          <span class="stage-label" style="left:34%">Screen</span>
+          <span class="stage-label" style="left:64%">Client<br><span>review</span></span>
+          <span class="stage-label" style="left:88%">Offer</span>
+          <div class="chip c1">CAND. 118 → screen</div>
+          <div class="chip c2">CAND. 093 → review</div>
+          <div class="chip c3">CAND. 071 → offer</div>
+        </div>
+        <div class="pipeline-foot">
+          <span>Median time to shortlist: <strong style="color:var(--ink)">9 days</strong></span>
+          <span>Candidates reviewed per placement: <strong style="color:var(--ink)">~14</strong></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="mono">What we do</span>
+        <h2>Three ways to bring in talent, one point of contact</h2>
+        <p>We don't hand you off between departments. The person who takes your search brief is the person who reviews your shortlist.</p>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="service-grid">
+        <div class="service">
+          <span class="num mono">01</span>
+          <h3>Direct-hire placement</h3>
+          <p>Permanent roles, sourced and screened against the brief you actually gave us — not a generic keyword match.</p>
+          <ul>
+            <li>Role scoping call</li>
+            <li>Sourced + referred candidates</li>
+            <li>Structured screening notes</li>
+          </ul>
+        </div>
+        <div class="service">
+          <span class="num mono">02</span>
+          <h3>Contract & interim staffing</h3>
+          <p>Short-notice coverage for defined periods of work, without the overhead of running your own contractor pipeline.</p>
+          <ul>
+            <li>2–26 week engagements</li>
+            <li>Candidate is our payroll, not yours</li>
+            <li>Extend or convert anytime</li>
+          </ul>
+        </div>
+        <div class="service">
+          <span class="num mono">03</span>
+          <h3>Embedded search support</h3>
+          <p>We sit inside your hiring process for a defined stretch — useful when you're scaling one function fast.</p>
+          <ul>
+            <li>Dedicated weekly cadence</li>
+            <li>Shared candidate tracker</li>
+            <li>Fixed monthly retainer</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="mono">How it works</span>
+        <h2>From brief to shortlist in four stages</h2>
+        <p>The pipeline above isn't decorative — this is the literal sequence every search runs through.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="mono">Stage 1</span>
+          <h3>Scope the role</h3>
+          <p>A working call to pin down the must-haves, the deal-breakers, and what "good" looks like six months in.</p>
+        </div>
+        <div class="step">
+          <span class="mono">Stage 2</span>
+          <h3>Source & screen</h3>
+          <p>We pull from direct outreach, referral networks, and our own candidate base, then screen against your brief.</p>
+        </div>
+        <div class="step">
+          <span class="mono">Stage 3</span>
+          <h3>Client review</h3>
+          <p>You get a short, honest list — with notes on trade-offs, not a wall of resumes to sort through yourself.</p>
+        </div>
+        <div class="step">
+          <span class="mono">Stage 4</span>
+          <h3>Offer & close</h3>
+          <p>We stay involved through offer negotiation and start date, so nothing falls apart in the final stretch.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why" id="why">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="mono">Why a new firm</span>
+        <h2>What you get from working with someone still building their name</h2>
+        <p>We're not going to claim a decade of track record we don't have yet. Here's what we offer instead.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-item">
+          <h3>Direct access</h3>
+          <p>You talk to the person running your search — every time, not just on the kickoff call.</p>
+        </div>
+        <div class="why-item">
+          <h3>Smaller caseload</h3>
+          <p>We're not running forty searches at once. Fewer clients means more hours against yours.</p>
+        </div>
+        <div class="why-item">
+          <h3>Transparent fees</h3>
+          <p>Flat, disclosed pricing per engagement type — no hidden percentage surprises at signing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap about-grid">
+      <div class="about-card">
+        <span class="mono">The short version</span>
+        <p>TRKYS Systems is an early-stage talent consultancy. We're building our reputation through the quality of individual searches, not through scale.</p>
+        <p>If you need a large panel firm with dozens of recruiters on staff, we're probably not that yet. If you need someone who reads your brief carefully and doesn't waste your time with a mismatched shortlist, that's exactly what we're set up to do.</p>
+      </div>
+      <div>
+        <div class="section-head" style="margin-bottom:24px;">
+          <span class="mono">About</span>
+          <h2>Built to do fewer searches, better</h2>
+          <p>Every candidate we put in front of a client has gone through the same structured screen — a conversation about the role, a review of relevant work, and a plain-language note on where they might not be a fit, not just where they are one. We'd rather send you three honest options than fifteen padded ones.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <div class="section-head" style="margin-bottom:24px;">
+          <span class="mono">Get in touch</span>
+          <h2>Tell us about the role</h2>
+          <p>Fill this in and we'll follow up within one business day to schedule a scoping call.</p>
+        </div>
+        <form id="contactForm">
+          <div class="field">
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="email">Work email</label>
+            <input id="email" name="email" type="email" required autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="service">What do you need</label>
+            <select id="service" name="service">
+              <option>Direct-hire placement</option>
+              <option>Contract & interim staffing</option>
+              <option>Embedded search support</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="message">Role details</label>
+            <textarea id="message" name="message" placeholder="Title, team, and what's making this hire urgent" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="align-self:flex-start;">Send request</button>
+          <p class="form-status" id="formStatus" role="status"></p>
+        </form>
+      </div>
+      <div class="contact-meta">
+        <div class="row">
+          <span class="mono">Email</span>
+          <a href="mailto:hr@trkyssystems.com">hr@trkyssystems.com</a>
+        </div>
+        <div class="row">
+          <span class="mono">Response time</span>
+          Within 1 business day
+        </div>
+        <div class="row">
+          <span class="mono">Based in</span>
+          Washington, USA — placing candidates across the US
+        </div>
+        <div class="row">
+          <span class="mono">Note</span>
+          This form doesn't send automatically on free static hosting — it opens your email client pre-filled with your details so nothing gets lost.
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <span class="mono">© <span id="year"></span> TRKYS Systems</span>
+    <span class="mono">Talent, matched with intention</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const navlinks = document.getElementById('navlinks');
+  menuToggle.addEventListener('click', () => {
+    const isOpen = navlinks.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+  navlinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navlinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Contact form: no backend on free static hosting, so build a mailto link
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const service = form.service.value;
+    const message = form.message.value.trim();
+
+    if(!name || !email || !message){
+      status.textContent = 'Please fill in all required fields.';
+      status.style.color = '#B4453A';
+      return;
+    }
+
+    const subject = encodeURIComponent('New search request: ' + service);
+    const body = encodeURIComponent(
+      'Name: ' + name + '\n' +
+      'Email: ' + email + '\n' +
+      'Service: ' + service + '\n\n' +
+      'Role details:\n' + message
+    );
+    window.location.href = 'mailto:hello@trkyssystems.com?subject=' + subject + '&body=' + body;
+    status.style.color = '#1F6F63';
+    status.textContent = 'Opening your email client to send this request…';
+  });
+</script>
+
 </body>
 </html>
